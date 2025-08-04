@@ -1,6 +1,6 @@
 import { Area } from "./area";
 import { Competition } from "./competition";
-import { Person, PersonRole } from "./person";
+import { Person } from "./person";
 import { Team } from "./team";
 
 export interface Match {
@@ -37,8 +37,7 @@ export interface Season {
     readonly startDate: string;
     readonly endDate: string;
     readonly currentMatchday: number;
-    // winner maybe not null
-    readonly winner?: null;
+    readonly winner?: Team | null;
     readonly stages: ReadonlyArray<Stage>;
 }
 
@@ -50,7 +49,7 @@ export interface MatchTeam {
     readonly crest: string;
     readonly coach: Coach | null;
     readonly leagueRank: number | null;
-    readonly formation: string;
+    readonly formation: string | null;
     readonly lineup: Player[];
     readonly bench: Player[];
     readonly statistics: TeamStatistics;
@@ -70,20 +69,20 @@ export interface Player {
 }
 
 export interface TeamStatistics {
-    readonly corner_kicks: number;
-    readonly free_kicks: number;
-    readonly goal_kicks: number;
+    readonly cornerKicks: number;
+    readonly freeKicks: number;
+    readonly goalKicks: number;
     readonly offsides: number;
     readonly fouls: number;
-    readonly ball_possession: number;
+    readonly ballPossession: number;
     readonly saves: number;
-    readonly throw_ins: number;
+    readonly throwIns: number;
     readonly shots: number;
-    readonly shots_on_goal: number;
-    readonly shots_off_goal: number;
-    readonly yellow_cards: number;
-    readonly yellow_red_cards: number;
-    readonly red_cards: number;
+    readonly shotsOnGoal: number;
+    readonly shotsOffGoal: number;
+    readonly yellowCards: number;
+    readonly yellowRedCards: number;
+    readonly redCards: number;
 }
 
 export interface Score {
@@ -103,7 +102,7 @@ export interface Result {
 export interface Goal {
   readonly minute: number;
   readonly injuryTime: number | null;
-  readonly type: string;
+  readonly type: GoalType;
   readonly team: Team;
   readonly scorer: Person;
   readonly assist: Person | null;
@@ -117,13 +116,14 @@ export interface Penalty {
   readonly player: Person;
   readonly team: Team;
   readonly scored: boolean;
+  readonly type: PenaltyType;
 }
 
 export interface Booking {
   readonly minute: number;
   readonly team: Team;
   readonly player: Person;
-  readonly card: "YELLOW" | "RED" | "YELLOW_RED";
+  readonly card: CardType;
 }
 
 export interface Substitution {
@@ -136,15 +136,35 @@ export interface Substitution {
 export interface Referee {
   readonly id: number;
   readonly name: string;
-  readonly type: PersonRole;
+  readonly type: RefereeRole;
   readonly nationality: string | null;
 }
+
+export enum GoalType {
+    REGULAR = "REGULAR",
+    OWN = "OWN",
+    PENALTY = "PENALTY"
+}
+
+export enum PenaltyType {
+    REGULAR_MATCH = "REGULAR_MATCH",
+    SHOOTOUT = "SHOOTOUT"
+}
+
+export enum CardType {
+    YELLOW = "YELLOW",
+    YELLOW_RED = "YELLOW_RED",
+    RED = "RED"
+}
+
 
 export enum Status {
     SCHEDULED = "SCHEDULED",
     TIMED = "TIMED",
     IN_PLAY = "IN_PLAY",
     PAUSED = "PAUSED",
+    EXTRA_TIME = "EXTRA_TIME",
+    PENALTY_SHOOTOUT = "PENALTY_SHOOTOUT",
     FINISHED = "FINISHED",
     SUSPENDED = "SUSPENDED",
     POSTPONED = "POSTPONED",
@@ -182,16 +202,27 @@ export enum Stage {
 
 
 export enum Group {
-    A = 'A',
-    B = 'B',
-    C = 'C',
-    D = 'D',
-    E = 'E',
-    F = 'F',
-    G = 'G',
-    H = 'H',
-    I = 'I',
-    J = 'J',
-    K = 'K',
-    L = 'L',
+    GROUP_A = "GROUP_A",
+    GROUP_B = "GROUP_B",
+    GROUP_C = "GROUP_C",
+    GROUP_D = "GROUP_D",
+    GROUP_E = "GROUP_E",
+    GROUP_F = "GROUP_F",
+    GROUP_G = "GROUP_G",
+    GROUP_H = "GROUP_H",
+    GROUP_I = "GROUP_I",
+    GROUP_J = "GROUP_J",
+    GROUP_K = "GROUP_K",
+    GROUP_L = "GROUP_L"
+}
+
+export enum RefereeRole {
+    REFEREE = "REFEREE",
+    ASSISTANT_REFEREE_N1 = "ASSISTANT_REFEREE_N1",
+    ASSISTANT_REFEREE_N2 = "ASSISTANT_REFEREE_N2",
+    ASSISTANT_REFEREE_N3 = "ASSISTANT_REFEREE_N3",
+    FOURTH_OFFICIAL = "FOURTH_OFFICIAL",
+    VIDEO_ASSISTANT_REFEREE_N1 = "VIDEO_ASSISTANT_REFEREE_N1",
+    VIDEO_ASSISTANT_REFEREE_N2 = "VIDEO_ASSISTANT_REFEREE_N2",
+    VIDEO_ASSISTANT_REFEREE_N3 = "VIDEO_ASSISTANT_REFEREE_N3"
 }

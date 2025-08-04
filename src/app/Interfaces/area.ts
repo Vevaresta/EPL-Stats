@@ -3,8 +3,8 @@ export interface Area {
     readonly name: string;
     readonly code: string;
     readonly flag: string | null;
-    readonly parentAreaId: number;
-    readonly parentArea: string;
+    readonly parentAreaId?: number;
+    readonly parentArea?: string;
     readonly childAreas: ReadonlyArray<ChildArea>;
 }
 

@@ -1,35 +1,25 @@
 import { Area } from "./area";
+import { CompetitionType, TeamType } from "./competition";
 import { Person } from "./person";
 
 export interface Team {
     readonly id: number;
     readonly name: string;
     readonly shortName: string;
-    readonly tla: string;
+    readonly tla: string | null;
     readonly crest: string | null;
     readonly address: string;
     readonly website: string;
-    readonly founded: number | null;
+    readonly founded: number | string | null;
     readonly clubColors: string;
     readonly venue: string;
     readonly lastUpdated: string;
 
-    readonly runningCompetitions: ReadonlyArray<CompetitionSummary>;
+    readonly runningCompetitions: ReadonlyArray<CompetitionType>;
 
     readonly coach?: Person;
-    readonly squad: readonly Person[];
+    readonly squad: ReadonlyArray<Person>;
     readonly area: Area;
-
-
+    readonly type: TeamType;
 }
 
-export interface CompetitionSummary {
-    readonly id: number;
-    readonly name: string;
-    readonly code: string;
-    readonly type: CompetitionType;
-    readonly emblem: string | null;
-}
-
-export type CompetitionType = 
-    "LEAGUE" | "LEAGUE CUP" | "NATIONAL CUP" | "CHAMPIONS LEAGUE" | "EUROPA LEAGUE" | "CONFERENCE LEAGUE" | "DOMESTIC SUPERCUP" | "EUROPEAN SUPERCUP" | "CONFEDERATION CUP" | "FRIENDLY";
