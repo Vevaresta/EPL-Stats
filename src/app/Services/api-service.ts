@@ -13,11 +13,12 @@ export class ApiService {
     private readonly http = inject(HttpClient);
 
     // TODO: error handling, other CRUD methods, HttpInterceptor 
-    get<T>(endpoint: string): Observable<T> {
+    get<T>(endpoint: string, params?: Record<string, string | number>): Observable<T> {
       return this.http.get<T>(`${this.baseUrl}${endpoint}`, {
       headers: {
         "X-Auth-Token": this.token
-      }
+      }, 
+      params
     });
   }
 }
