@@ -1,5 +1,5 @@
 import { Area } from "./area";
-import { CompetitionType, TeamType } from "./competition";
+import { CompetitionType } from "./competition";
 import { Person } from "./person";
 
 export interface Team {
@@ -21,5 +21,11 @@ export interface Team {
     readonly squad: ReadonlyArray<Person>;
     readonly area: Area;
     readonly type: TeamType;
+}
+
+
+export enum TeamType {
+    CLUB = "CLUB",
+    NATIONAL = "NATIONAL"
 }
 
