@@ -10,6 +10,6 @@ export const appConfig: ApplicationConfig = {
     provideZonelessChangeDetection(),
     provideRouter(routes),
     //add interceptors later
-    provideHttpClient(withFetch())
+    provideHttpClient()
   ]
 };
