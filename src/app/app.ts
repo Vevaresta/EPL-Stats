@@ -4,10 +4,11 @@ import { MatchService } from './Services/match-service';
 import { PersonService } from './Services/person-service';
 import { TeamService } from './Services/team-service';
 import { CompetitionService } from './Services/competition-service';
+import { Person } from "./Components/person/person";
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
+  imports: [RouterOutlet, Person],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
@@ -32,9 +33,9 @@ export class App {
           next: (team) => console.log('✅ Loaded team:', team),
           error: (err) => console.error('❌ Error:', err)
     }); */
-     this.competitionService.getCompetition("PL").subscribe({
+/*      this.competitionService.getCompetition("PL").subscribe({
           next: (competition) => console.log('✅ Loaded competition:', competition),
           error: (err) => console.error('❌ Error:', err)
-  });
+  }); */
 }
 }
