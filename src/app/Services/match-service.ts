@@ -23,5 +23,4 @@ export class MatchService {
       dateTo: date,
     });
   }
-  
 }
