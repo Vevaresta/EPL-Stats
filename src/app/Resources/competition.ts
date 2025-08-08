@@ -21,4 +21,30 @@ export enum CompetitionType {
     PLAYOFFS = "PLAYOFFS"
 }
 
+export interface LeagueStandingResponse {
+  standings: Array<{
+    type: string;
+    table: Array<{
+      position: number;
+      team: {
+        id: number;
+        name: string;
+        shortName: string;
+        tla: string;
+        crest: string;
+      };
+      playedGames: number;
+      won: number;
+      draw: number;
+      lost: number;
+      points: number;
+      goalsFor: number;
+      goalsAgainst: number;
+      goalDifference: number;
+      form?: string;
+    }>;
+  }>;
+}
+
+
 
