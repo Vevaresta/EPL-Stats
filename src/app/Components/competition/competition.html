@@ -1,1 +1,14 @@
-<p>competition works!</p>
+<p>English Premier League Table 2024/2025<p>
+<ol>
+    @for(club of leagueTable(); track club.team.id ){
+        <li>{{ club.team.name }} - Points: {{ club.points}},
+            W: {{ club.won }}
+            D: {{ club.draw }}
+            L: {{ club.lost }}
+            GF: {{ club.goalsFor }}
+            GA: {{ club.goalsAgainst }}
+            GD: {{ club.goalDifference }}
+            F: {{ club.form}}
+        </li>
+    }
+</ol>

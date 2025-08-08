@@ -1,14 +1,14 @@
 import { Component, inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { MatchService } from './Services/match-service';
 import { PersonService } from './Services/person-service';
 import { TeamService } from './Services/team-service';
 import { CompetitionService } from './Services/competition-service';
 import { Person } from "./Components/person/person";
+import { Competition } from "./Components/competition/competition";
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, Person],
+  imports: [RouterOutlet, Person, Competition],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })

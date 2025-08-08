@@ -1,7 +1,6 @@
 import { inject, Injectable } from '@angular/core';
 import { ApiService } from './api-service';
 import { Competition, LeagueStandingResponse } from '../Resources/competition';
-import { Team } from '../Resources/team';
 import { map } from 'rxjs';
 
 @Injectable({
