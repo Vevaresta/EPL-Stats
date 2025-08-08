@@ -1,1 +1,6 @@
-<p>person works!</p>
+<h2>Top 10 English Premier League Scorers 2024/2025</h2>
+<ol>
+    @for (scorer of topScorers(); track scorer.player.id) {
+        <li>{{ scorer.player.name}} {{ scorer.goals }} goals </li>
+    }
+</ol>

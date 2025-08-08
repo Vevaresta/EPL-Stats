@@ -21,6 +21,15 @@ export interface Contract {
     readonly until: string;
 }
 
+export interface Scorer {
+    readonly player: Person;
+    readonly team: Team;
+    readonly goals: number;
+    readonly assists: number;
+    readonly penalties: number;
+
+}
+
 export type PersonRole = 
     "PLAYER" | "COACH" | "REFEREE";
 

@@ -16,7 +16,6 @@ export class ApiService {
 
     // TODO: error handling, other CRUD methods, HttpInterceptor 
     get<T>(endpoint: string, params?: Record<string, string | number>): Observable<T> {
-      console.log('📡 API GET', `${this.baseUrl}${endpoint}`);
       return this.http.get<T>(`${this.baseUrl}${endpoint}`, {
       headers: {
         "X-Auth-Token": this.token
