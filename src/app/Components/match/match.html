@@ -1,0 +1,12 @@
+<p>Liverpool matches in 2024/2025</p>
+<ol>
+    @for(match of liverpoolMatches(); track match.id) {
+        <li>
+            {{ match.utcDate | date: "mediumDate"}} - 
+            {{ match.homeTeam.name}} vs {{ match.awayTeam.name}}
+            @if (match.score.fullTime.home !==null) {
+                - {{ match.score.fullTime.home}} : {{ match.score.fullTime.away}}
+            }
+        </li>
+    }
+</ol>

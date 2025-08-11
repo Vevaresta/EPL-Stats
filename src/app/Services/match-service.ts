@@ -1,6 +1,7 @@
 import { inject, Injectable } from '@angular/core';
 import { ApiService } from './api-service';
 import { Match } from '../Resources/match';
+import { map, pipe } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -22,5 +23,14 @@ export class MatchService {
       dateFrom: date,
       dateTo: date,
     });
+  }
+
+  getLiverpoolMatches2024() {
+    return this.api.get<{ matches: Match[]}> ("teams/64/matches", {
+      season: 2024
+    }).pipe(
+      map(response => response.matches)
+    );
+  
   }
 }

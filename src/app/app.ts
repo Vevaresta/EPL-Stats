@@ -5,10 +5,11 @@ import { TeamService } from './Services/team-service';
 import { CompetitionService } from './Services/competition-service';
 import { Person } from "./Components/person/person";
 import { Competition } from "./Components/competition/competition";
+import { Match } from './Components/match/match';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, Person, Competition],
+  imports: [RouterOutlet, Person, Competition, Match],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
