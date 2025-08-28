@@ -6,6 +6,11 @@
   <p>Date of Birth: {{ p.dateOfBirth }}</p>
   <p>Position: {{ p.position }}</p>
   <p>Shirt Number: {{ p.shirtNumber || 'N/A' }}</p>
+
+  <button class="btn btn-primary mt-3" routerLink="/">
+    Back to Home
+  </button>
 } @else {
   <p>Loading player details...</p>
 }
+
