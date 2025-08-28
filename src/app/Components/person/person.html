@@ -12,7 +12,11 @@
         @for (scorer of topScorers(); track scorer.player.id) {
             <tr>
                 <td>{{ $index + 1}}</td>
-                <td>{{ scorer.player.name }}</td>
+                <td>
+                    <a [routerLink]="['/person', scorer.player.id]" class="text-white">
+                    {{ scorer.player.name }}
+                    </a>                  
+                </td>
                 <td>{{ scorer.goals }}</td>
             </tr>
         }

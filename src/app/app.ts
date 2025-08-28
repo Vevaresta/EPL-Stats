@@ -3,10 +3,11 @@ import { RouterOutlet } from '@angular/router';
 import { Person } from "./Components/person/person";
 import { Competition } from "./Components/competition/competition";
 import { Match } from './Components/match/match';
+import { PersonDetail } from './Components/person-detail/person-detail';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, Person, Competition, Match],
+  imports: [RouterOutlet, Person, Competition, Match,],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
