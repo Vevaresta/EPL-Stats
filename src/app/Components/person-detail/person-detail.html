@@ -1,16 +1,16 @@
-@if (person(); as p) {
-  <h2>{{ p.name }}</h2>
-  <p>First Name: {{ p.firstName }}</p>
-  <p>Last Name: {{ p.lastName }}</p>
-  <p>Nationality: {{ p.nationality }}</p>
-  <p>Date of Birth: {{ p.dateOfBirth }}</p>
-  <p>Position: {{ p.position }}</p>
-  <p>Shirt Number: {{ p.shirtNumber || 'N/A' }}</p>
+<div class="w-75 mx-auto text-start player-detail">
+  @if (person(); as p) {
+    <h3 class="section-title">Player Information</h3>
+    <p>First Name: {{ p.firstName }}</p>
+    <p>Last Name: {{ p.lastName }}</p>
+    <p>Nationality: {{ p.nationality }}</p>
+    <p>Date of Birth: {{ p.dateOfBirth }}</p>
+    <p>Position: {{ p.position }}</p>
+    <p>Shirt Number: {{ p.shirtNumber || 'N/A' }}</p>
 
-  <button class="btn btn-primary mt-3" routerLink="/">
-    Back to Home
-  </button>
-} @else {
-  <p>Loading player details...</p>
-}
+  } @else {
+    <p>Loading player details...</p>
+  }
+
+</div>
 

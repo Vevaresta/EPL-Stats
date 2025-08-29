@@ -1,0 +1,10 @@
+.player-detail p,
+.player-detail .section-title {
+  border-bottom: 1px solid;
+  padding-bottom: 8px;
+  margin-bottom: 12px;
+}
+
+.player-detail .section-title {
+    font-weight: bold;
+}
