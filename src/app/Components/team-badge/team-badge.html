@@ -1,0 +1,15 @@
+@if (team(); as t) {
+  <div class="d-flex align-items-center">
+    @if (displayCrest()) {
+      <img 
+        [src]="displayCrest()" 
+        [alt]="t.name + 'crest'" 
+        class="me-2" 
+        style="height: 24px;"
+      >
+    }
+    <span>{{ t.name }}</span>
+  </div>
+} @else {
+  <span>No team</span>
+}

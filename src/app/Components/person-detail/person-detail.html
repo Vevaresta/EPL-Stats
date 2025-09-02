@@ -1,12 +1,13 @@
 <div class="w-75 mx-auto text-start player-detail">
   @if (person(); as p) {
     <h3 class="section-title">Player Information</h3>
-    <p>First Name: {{ p.firstName }}</p>
-    <p>Last Name: {{ p.lastName }}</p>
-    <p>Nationality: {{ p.nationality }}</p>
-    <p>Date of Birth: {{ p.dateOfBirth }}</p>
+    <p>Full Name: {{ p.firstName }} {{ p.lastName }}</p>
     <p>Position: {{ p.position }}</p>
-    <p>Shirt Number: {{ p.shirtNumber || 'N/A' }}</p>
+    <p>Date of Birth: {{ p.dateOfBirth }}</p>
+    <p>Nationality: {{ p.nationality }}</p>
+    <p>Current Team: {{ p.currentTeam?.name }}</p>
+    <p>Contract: {{ p.contract?.start }} {{p.contract?.until}}</p>
+    <p>Est. market value: {{ p.marketValue || 'N/A' }}</p>
 
   } @else {
     <p>Loading player details...</p>
