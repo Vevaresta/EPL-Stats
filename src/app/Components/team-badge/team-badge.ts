@@ -7,7 +7,7 @@ import type { Team as TeamModel } from '../../Resources/team';
   styleUrl: './team-badge.css'
 })
 export class TeamBadge {
-  readonly team = input<TeamModel | undefined>();
+  readonly team = input<TeamModel | undefined | null>();
   readonly displayCrest = computed(() => this.team()?.crest ?? null);
 
 }

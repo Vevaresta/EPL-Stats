@@ -1,12 +1,14 @@
-import { Component, inject } from '@angular/core';
+import { Component, computed, inject, input, signal } from '@angular/core';
 import { PersonService } from '../../Services/person-service';
 import { ActivatedRoute, RouterModule } from '@angular/router';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { CommonModule } from '@angular/common';
+import { TeamBadge } from '../team-badge/team-badge';
+import { Match } from '../../Resources/match';
 
 @Component({
   selector: 'app-person-detail',
-  imports: [CommonModule, RouterModule],
+  imports: [CommonModule, RouterModule, TeamBadge],
   templateUrl: './person-detail.html',
   styleUrl: './person-detail.css'
 })
@@ -21,4 +23,17 @@ export class PersonDetail {
       this.personService.getPerson(this.personId),
       { initialValue: null}
     )
+
+    readonly matches = signal<ReadonlyArray<Match>>([]);
+
+    readonly totalMatches = computed(() => this.matches().length);
+
+    readonly firstMatchDate = computed(() => {
+      if (!this.matches().length) 
+        return null;
+      return this.matches()
+        .map(match => new Date(match.utcDate))
+        .sort((earlier, later) => earlier.getTime() - later.getTime())[0];
+    });
+
 }

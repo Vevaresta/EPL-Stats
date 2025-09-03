@@ -1,12 +1,14 @@
 @if (team(); as t) {
-  <div class="d-flex align-items-center">
+  <div class="d-inline-flex align-items-center">
     @if (displayCrest()) {
       <img 
         [src]="displayCrest()" 
         [alt]="t.name + 'crest'" 
-        class="me-2" 
-        style="height: 24px;"
+        class="me-2"         
+        style="height: 1em; width: auto;" 
       >
+      <!--style="height: 1em keeps the crest aligned with the font size of the surrounding text, 
+       so if I change typography, the badge scales automatically. -->
     }
     <span>{{ t.name }}</span>
   </div>
