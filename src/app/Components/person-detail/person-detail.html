@@ -8,6 +8,11 @@
     <p>Current Team:  <app-team-badge [team]="p.currentTeam"></app-team-badge></p>
     <p>Contract: {{ p.contract?.start }} {{p.contract?.until}}</p>
     <p>Est. market value: {{ p.marketValue || 'N/A' }}</p>
+    <p>Matches in database: {{ totalMatches() }}
+      @if (firstMatchDate() && lastMatchDate()) {
+        ({{ firstMatchDate() | date:"yyyy-MM-dd"}} - ({{ lastMatchDate() | date:"yyyy-MM-dd"}}))
+      }
+    </p>
 
 
   } @else {

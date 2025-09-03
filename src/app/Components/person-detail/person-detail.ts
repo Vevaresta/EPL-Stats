@@ -36,4 +36,23 @@ export class PersonDetail {
         .sort((earlier, later) => earlier.getTime() - later.getTime())[0];
     });
 
+    readonly lastMatchDate = computed(() => {
+      if (!this.matches().length)
+        return null;
+      return this.matches()
+        .map(match => new Date(match.utcDate))
+        .sort((earlier, later) => later.getTime() - earlier.getTime())[0];      
+    });
+
+    setMatches(allMatches: Match[]) {
+      const playerTeamId = this.person()?.currentTeam?.id;
+        if (!playerTeamId) return;
+      
+        const teamMatches = allMatches.filter(
+          match => match.homeTeam.id === playerTeamId || match.awayTeam.id === playerTeamId
+        );
+
+        this.matches.set(teamMatches);
+    }
+
 }
