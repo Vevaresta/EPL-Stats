@@ -2,6 +2,7 @@ import { inject, Injectable } from '@angular/core';
 import { ApiService } from './api-service';
 import { Person, Scorer } from '../Resources/person';
 import { map } from 'rxjs';
+import { Match } from '../Resources/match';
 
 @Injectable({
   providedIn: 'root'
@@ -21,5 +22,13 @@ export class PersonService {
         }).pipe(
           map(response => response.scorers)
         );
+    }
+
+    getMatchesForPlayer(playerId: number, season: number) {
+      return this.api.get<{ matches: Match[] }>(`/persons/${playerId}/matches`, {
+        season
+      }).pipe(
+        map(res => res.matches)
+      );
     }
 }

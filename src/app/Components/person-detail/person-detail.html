@@ -5,47 +5,46 @@
     <p>Position: {{ p.position }}</p>
     <p>Date of Birth: {{ p.dateOfBirth }}</p>
     <p>Nationality: {{ p.nationality }}</p>
-    <p>Current Team:  <app-team-badge [team]="p.currentTeam"></app-team-badge></p>
-    <p>Contract: {{ p.contract?.start }} {{p.contract?.until}}</p>
+    <p>Current Team: <app-team-badge [team]="p.currentTeam"></app-team-badge></p>
+    <p>Contract: {{ p.contract?.start }} - {{ p.contract?.until }}</p>
     <p>Est. market value: {{ p.marketValue || 'N/A' }}</p>
-    <p>Matches in database: {{ totalMatches() }}
-      @if (firstMatchDate() && lastMatchDate()) {
-        ({{ firstMatchDate() | date:"yyyy-MM-dd"}} - ({{ lastMatchDate() | date:"yyyy-MM-dd"}}))
-      }
-    </p>
-
-
   } @else {
     <p>Loading player details...</p>
   }
-
 </div>
 
-<h3 class="mt-4">Matches in 2024/2025</h3>
-
-<table class="table table-striped">
-  <thead>
-    <tr>
-      <th>Date</th>
-      <th>Competition</th>
-      <th>Home</th>
-      <th>Away</th>
-      <th>Score</th>
-    </tr>
-  </thead>
-  <tbody>
-    @for (match of matches(); track match.id) {
-      <tr>
-        <td>{{ match.utcDate | date: 'yyyy-MM-dd' }}</td>
-        <td>{{ match.competition.name }}</td>
-        <td>{{ match.homeTeam.name }}</td>
-        <td>{{ match.awayTeam.name }}</td>
-        <td>{{ match.score.fullTime.home }} - {{ match.score.fullTime.away }}</td>
-      </tr>
-    } @empty {
-      <tr>
-        <td colspan="5" class="text-center">No matches found</td>
-      </tr>
+<div class="w-75 mx-auto text-start player-matches mt-4">
+  <h3 class="section-title">Matches Played in 2025/2026</h3>
+  @if (playerMatches(); as matches) {
+    @if (matches.length > 0) {
+      <table class="table table-dark table-striped-columns">
+        <thead>
+          <tr>
+            <th>Date</th>
+            <th>Competition</th>
+            <th>Home Team</th>
+            <th>Away Team</th>
+            <th>Score</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (match of matches; track match.id) {
+            <tr>
+              <td>{{ match.utcDate | date:'shortDate' }}</td>
+              <td>{{ match.competition.name }}</td>
+              <td>{{ match.homeTeam.name }}</td>
+              <td>{{ match.awayTeam.name }}</td>
+              <td>
+                {{ match.score.fullTime.home }} - {{ match.score.fullTime.away }}
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    } @else {
+      <p>No matches found for this player in 2024/25 season.</p>
     }
-  </tbody>
-</table>
+  } @else {
+    <p>Loading matches...</p>
+  }
+</div>
