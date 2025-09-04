@@ -1,10 +1,12 @@
-import { Component, computed, inject, input, signal } from '@angular/core';
+import { Component, computed, inject, signal } from '@angular/core';
 import { PersonService } from '../../Services/person-service';
 import { ActivatedRoute, RouterModule } from '@angular/router';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { CommonModule } from '@angular/common';
 import { TeamBadge } from '../team-badge/team-badge';
 import { Match } from '../../Resources/match';
+import { MatchService } from '../../Services/match-service';
+import { of, switchMap } from 'rxjs';
 
 @Component({
   selector: 'app-person-detail',
@@ -16,6 +18,7 @@ export class PersonDetail {
 
     private readonly personService = inject(PersonService);
     private readonly route = inject(ActivatedRoute);
+    private readonly matchService = inject(MatchService);
 
     readonly personId = Number(this.route.snapshot.paramMap.get("id"));
 
@@ -55,4 +58,38 @@ export class PersonDetail {
         this.matches.set(teamMatches);
     }
 
+
+    readonly competitionCode = computed(() => {
+      const person = this.person();
+      if (!person?.currentTeam) return null;
+
+      return person.currentTeam.runningCompetitions?.[0]?.code ?? null;
+    })
+
+
+    readonly allMatches = toSignal(
+      this.personService.getPerson(this.personId).pipe(
+        switchMap(person => {
+          const code = person?.currentTeam?.runningCompetitions?.[0]?.code;
+          return code
+            ? this.matchService.getCompetitionMatches(code, 2024)
+            : of([]);
+        })
+      ),
+      { initialValue: [] as Match[] }
+    );
+
+
+    readonly playerMatches = computed(() => {
+      const player = this.person();
+      const matches = this.allMatches();
+      if (!player) return [];
+
+      return matches.filter(match =>
+        [...match.homeTeam.lineup, ...match.homeTeam.bench,
+          ...match.awayTeam.lineup, ...match.awayTeam.bench]
+          .some(player => player.id === player.id)
+        
+      );
+    });
 }

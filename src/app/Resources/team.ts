@@ -1,5 +1,5 @@
 import { Area } from "./area";
-import { CompetitionType } from "./competition";
+import { Competition } from "./competition";
 import { Person } from "./person";
 
 export interface Team {
@@ -15,7 +15,7 @@ export interface Team {
     readonly venue: string;
     readonly lastUpdated: string;
 
-    readonly runningCompetitions: ReadonlyArray<CompetitionType>;
+    readonly runningCompetitions: ReadonlyArray<Competition>;
 
     readonly coach?: Person;
     readonly squad: ReadonlyArray<Person>;

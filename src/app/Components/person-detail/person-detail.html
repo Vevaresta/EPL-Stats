@@ -21,3 +21,31 @@
 
 </div>
 
+<h3 class="mt-4">Matches in 2024/2025</h3>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Date</th>
+      <th>Competition</th>
+      <th>Home</th>
+      <th>Away</th>
+      <th>Score</th>
+    </tr>
+  </thead>
+  <tbody>
+    @for (match of matches(); track match.id) {
+      <tr>
+        <td>{{ match.utcDate | date: 'yyyy-MM-dd' }}</td>
+        <td>{{ match.competition.name }}</td>
+        <td>{{ match.homeTeam.name }}</td>
+        <td>{{ match.awayTeam.name }}</td>
+        <td>{{ match.score.fullTime.home }} - {{ match.score.fullTime.away }}</td>
+      </tr>
+    } @empty {
+      <tr>
+        <td colspan="5" class="text-center">No matches found</td>
+      </tr>
+    }
+  </tbody>
+</table>

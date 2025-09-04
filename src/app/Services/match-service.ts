@@ -26,12 +26,20 @@ export class MatchService {
   }
 
   getLiverpoolMatches2024() {
-    return this.api.get<{ matches: Match[]}> ("teams/64/matches", {
+    return this.api.get<{ matches: Match[]}>("teams/64/matches", {
       season: 2024
     }).pipe(
       map(response => response.matches)
     );
   
+  }
+
+  getCompetitionMatches(competitionCode: string, season: number) {
+    return this.api.get<{ matches: Match[]}>(`/competitions/${competitionCode}/matches`, {
+      season
+    }).pipe(map(response => response.matches)
+  ); 
+         
   }
   // todo: get matches by matchday 
 }
