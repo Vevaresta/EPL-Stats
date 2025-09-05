@@ -25,14 +25,15 @@ export class MatchService {
     });
   }
 
-  getLiverpoolMatches2024() {
-    return this.api.get<{ matches: Match[]}>("teams/64/matches", {
-      season: 2024
+
+  getMatchesByCompetitionAndMatchday(competitionCode: string, season: number, matchday: number) {
+    return this.api.get<{ matches: Match[] }>(`/competitions/${competitionCode}/matches`, {
+      season,
+      matchday
     }).pipe(
       map(response => response.matches)
     );
   }
-
 
 
          
