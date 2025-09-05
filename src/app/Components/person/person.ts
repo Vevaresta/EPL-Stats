@@ -19,4 +19,9 @@ export class Person {
       { initialValue: []}
     );
 
+    readonly topAssist = toSignal(
+      this.personService.getTopAssists(),
+      { initialValue: []}
+    );
+
 }

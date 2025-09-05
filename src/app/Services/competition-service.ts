@@ -17,7 +17,7 @@ export class CompetitionService {
       return this.api.get<LeagueStandingResponse>(
         "/competitions/PL/standings", {
           matchday: 38,
-          season: 2024
+          season: 2025
         }).pipe(
           map(response => response.standings.find(
             standing => standing.type ==="TOTAL")?.table ?? [])
