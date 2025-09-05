@@ -33,9 +33,6 @@ export class PersonDetail {
       { initialValue: [] as Match[] }
     );
 
-
-
-
-
+      
 
 }

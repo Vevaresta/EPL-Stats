@@ -28,7 +28,7 @@ export class PersonService {
       return this.api.get<{ matches: Match[] }>(`/persons/${playerId}/matches`, {
         season
       }).pipe(
-        map(res => res.matches)
+        map(response => response.matches)
       );
     }
 }
