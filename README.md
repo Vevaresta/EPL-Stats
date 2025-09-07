@@ -30,4 +30,4 @@ It pulls live and historical football data from the Football-Data.org API. A lot
 
     - API: Football-Data.org REST API
 
-  - Editor: Visual Studio Code
+    - Editor: Visual Studio Code
