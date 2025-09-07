@@ -6,28 +6,28 @@ It pulls live and historical football data from the Football-Data.org API. A lot
 
 🚀 Features
 
-📊 League Table – View the current Premier League table (points, wins, losses, draws, GD, form, etc.).
+  - 📊 League Table – View the current Premier League table (points, wins, losses, draws, GD, form, etc.).
 
-👤 Player Profiles – See detailed player information such as position, nationality, market value, contract details, and current club.
+  - 👤 Player Profiles – See detailed player information such as position, nationality, market value, contract details, and current club.
 
-🎯 Top Scorers & Assists – Track the league’s best performers by goals and assists for the current season.
+  - 🎯 Top Scorers & Assists – Track the league’s best performers by goals and assists for the current season.
 
-📅 Match Schedules & Results – Browse EPL matches by week (1–38).
+  - 📅 Match Schedules & Results – Browse EPL matches by week (1–38).
   
-  - Includes matchday dropdown navigation.
+    - Includes matchday dropdown navigation.
 
-  - Shows home & away teams, scorelines, and other match details.
+    - Shows home & away teams, scorelines, and other match details.
 
-🔥 Player Match Stats – Check individual player performance across matches, including goals scored and assists.
+  - 🔥 Player Match Stats – Check individual player performance across matches, including goals scored and assists.
 
-  - 🏟 Club Matches – View a team’s matches from a selected season.
+    - 🏟 Club Matches – View a team’s matches from a selected season.
 
-🛠️ Tech Stack
+  - 🛠️ Tech Stack
 
-  - Frontend Framework: Angular 20 with Signals
+    - Frontend Framework: Angular 20 with Signals
 
-  - UI: Bootstrap 5
+    - UI: Bootstrap 5
 
-  - API: Football-Data.org REST API
+    - API: Football-Data.org REST API
 
   - Editor: Visual Studio Code
