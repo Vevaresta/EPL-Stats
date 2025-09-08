@@ -1,36 +1,39 @@
-<!-- match-dropdown.component.html -->
-<div class="dropdown w-25 mb-3">
-  <button
-    class="btn btn-secondary dropdown-toggle"
-    type="button"
-    (click)="open.set(!open())"
-    [attr.aria-expanded]="open()">
-    Week {{ selectedMatchday() }}
-  </button>
-  <ul class="dropdown-menu" [class.show]="open()">
-    @for (week of weeks; track week) {
-      <li>
-        <a
-          class="dropdown-item"
-          href="#"
-          [class.active]="selectedMatchday() === week"
-          (click)="
-            $event.preventDefault();
-            selectedMatchday.set(week);
-            open.set(false);
-          ">
-          Week {{ week }}
-        </a>
-      </li>
-    }
-  </ul>
+<div class="d-flex align-items-center justify-content-between mb-2">
+    <div class="dropdown">
+      <button
+        class="btn btn-secondary dropdown-toggle"
+        type="button"
+        (click)="open.set(!open())"
+        [attr.aria-expanded]="open()">
+        Week {{ selectedMatchday() }}
+      </button>
+      <ul class="dropdown-menu" [class.show]="open()">
+        @for (week of weeks; track week) {
+          <li>
+            <a
+              class="dropdown-item"
+              href="#"
+              [class.active]="selectedMatchday() === week"
+              (click)="
+                $event.preventDefault();
+                selectedMatchday.set(week);
+                open.set(false);
+              ">
+              Week {{ week }}
+            </a>
+          </li>
+        }
+      </ul>
+    </div>
+
+
+<h5 class="m-0 text-center flex-grow-1">
+    Premier League Matches - Week {{ selectedMatchday()}}
+</h5>
+
+<div style="width: 120px"></div>
 </div>
 
-
-
-
-
-<h3>Premier League Matches - Week {{ selectedMatchday()}}</h3>
 <table class="table table-dark table-striped-columns">
     <thead>
         <tr>
