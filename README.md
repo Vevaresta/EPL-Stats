@@ -1,59 +1,33 @@
-# EPLStats
+I'm currently learning Typescript/Angular so I wanted to make a project where I could implement everything I learned so far.
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.0.0-rc.0.
+EPL Stats is an Angular 20 web application that lets users explore rich statistics from the English Premier League (EPL).
 
-## Development server
+It pulls live and historical football data from the Football-Data.org API. A lot of data is hidden behind a paywall so I use only what is available for free.
 
-To start a local development server, run:
+🚀 Features
 
-```bash
-ng serve
-```
+  - 📊 League Table – View the current Premier League table (points, wins, losses, draws, GD, form, etc.).
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+  - 👤 Player Profiles – See detailed player information such as position, nationality, market value, contract details, and current club.
 
-## Code scaffolding
+  - 🎯 Top Scorers & Assists – Track the league’s best performers by goals and assists for the current season.
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+  - 📅 Match Schedules & Results – Browse EPL matches by week (1–38).
+  
+    - Includes matchday dropdown navigation.
 
-```bash
-ng generate component component-name
-```
+    - Shows home & away teams, scorelines, and other match details.
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+  - 🔥 Player Match Stats – Check individual player performance across matches, including goals scored and assists.
 
-```bash
-ng generate --help
-```
+    - 🏟 Club Matches – View a team’s matches from a selected season.
 
-## Building
+  - 🛠️ Tech Stack
 
-To build the project run:
+    - Frontend Framework: Angular 20 with Signals
 
-```bash
-ng build
-```
+    - UI: Bootstrap 5
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+    - API: Football-Data.org REST API
 
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+    - Editor: Visual Studio Code
