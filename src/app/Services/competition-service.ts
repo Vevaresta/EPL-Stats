@@ -23,4 +23,12 @@ export class CompetitionService {
             standing => standing.type ==="TOTAL")?.table ?? [])
           );
     }
+
+    getLeagueTable(competitionCode: string, season: number) {
+      return this.api.get<{ standings: any[] }>(`competitions/${competitionCode}/standings`, {
+        season,
+      }).pipe(
+        map((res) => res.standings[0].table)
+      );
+    }
 }

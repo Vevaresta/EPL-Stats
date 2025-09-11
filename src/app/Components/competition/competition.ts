@@ -1,10 +1,11 @@
 import { Component, inject } from '@angular/core';
 import { CompetitionService } from '../../Services/competition-service';
 import { toSignal } from '@angular/core/rxjs-interop';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-competition',
-  imports: [],
+  imports: [RouterLink],
   templateUrl: './competition.html',
   styleUrl: './competition.css'
 })

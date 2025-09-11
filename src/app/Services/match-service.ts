@@ -35,4 +35,12 @@ export class MatchService {
     );
   }
 
+  getMatchesByTeam(teamId: number, season: number) {
+    return this.api.get<{ matches: Match[] }>(`/teams/${teamId}/matches`, {
+      season
+    }).pipe(
+      map(res => res.matches)
+    );
+  }
+
 }

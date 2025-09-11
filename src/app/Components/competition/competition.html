@@ -19,6 +19,12 @@
         @for(club of leagueTable(); track club.team.id) {
         <tr>
             <td>{{ $index + 1 }}</td>
+            <td>
+                <a [routerLink]="['/club', club.team.id]" class="text-white text-decoration-none">
+                    <img [src]="club.team.crest" alt="crest" width="24" height="24" class="me-2">
+                    {{ club.team.name }}
+                </a>
+            </td>
             <td>{{ club.team.name }}</td>
             <td>{{ club.playedGames}}</td>
             <td>{{ club.points }}</td>
