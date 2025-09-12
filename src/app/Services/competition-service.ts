@@ -13,6 +13,7 @@ export class CompetitionService {
       return this.api.get<Competition>(`/competitions/${id}`);
     }
   
+    // get current league table for all teams
     getPremierLeagueTable() {
       return this.api.get<LeagueStandingResponse>(
         "/competitions/PL/standings", {

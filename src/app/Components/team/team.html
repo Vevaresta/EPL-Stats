@@ -1,1 +1,42 @@
-<p>team works!</p>
+<div class="w-75 mx-auto text-start club-detail">
+    @if (club(); as c) {
+        <h3>
+            <img [src]="c.crest" alt="logo" width="40" height="40" class="me-2">
+            {{ c.name }}
+        </h3>
+
+        <p>League Table Position: {{ currentPosition() || "N/A" }}</p>
+        <p>Seasonal Progress: {{ matches().length }}/38 games played</p>
+
+        <p>Last Win: {{ lastWinDate() }}</p>
+        <p>Last Loss: {{ lastLossDate() }}</p>
+        <p>Last Points Gained: ...</p>
+        <p>Last Points Dropped: ...</p>
+
+        <h4>Last 10 Games</h4>
+        <table class="table table-dark table-striped-columns">
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Opponent</th>
+                    <th>Result</th>
+                </tr>
+            </thead>
+            <tbody>
+                @for (match of matches().slice(-10); track match.id){
+                    <tr>
+                        <td>{{ match.utcDate | date: "mediumDate" }}</td>
+                        <td>
+                            {{ match.homeTeam.id === c.id ? match.awayTeam.name : match.homeTeam.name }}
+                        </td>
+                        <td>
+                            {{ match.score.fullTime.home }} - {{ match.score.fullTime.away }}
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    } @else {
+        <p>Loading club details...</p>
+    }
+</div>
