@@ -1,1 +1,26 @@
-<p>top-performing-teams works!</p>
+<h5>Top pefroming teams</h5>
+<p>Best performing teams accros Europe's top 5 flights</p>
+<table class="table table-dark table-striped-columns">
+    <thead>
+        <tr>
+            <th></th>
+            <th>Team</th>
+            <th>Form</th>
+            <th>⌀ points</th>
+            <th>⌀ scored goals</th>
+        </tr>
+    </thead>
+    <tbody>
+        @for (t of teamsWithStats(); track t.team.id){
+            <tr>
+                <td>{{ $index + 1 }}</td>
+                <td>
+                    <app-team-badge [team]="t.team"></app-team-badge>
+                </td>
+                <td>{{ t.form }}</td>
+                <td>{{ t.avgPoints}}</td>
+                <td>{{ t.avgGoals}}</td>
+            </tr>
+        }
+    </tbody>
+</table>

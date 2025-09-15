@@ -9,7 +9,7 @@ import { map } from 'rxjs';
 
 @Component({
   selector: 'app-team',
-  imports: [CommonModule, RouterModule, RouterLink],
+  imports: [CommonModule, RouterModule],
   templateUrl: './team.html',
   styleUrl: './team.css'
 })

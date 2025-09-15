@@ -1,7 +1,7 @@
 import { inject, Injectable } from '@angular/core';
 import { ApiService } from './api-service';
 import { Competition, LeagueStandingResponse } from '../Resources/competition';
-import { map } from 'rxjs';
+import { forkJoin, map } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -30,6 +30,26 @@ export class CompetitionService {
         season,
       }).pipe(
         map((res) => res.standings[0].table)
+      );
+    }
+
+    getTopPerformingTeams(season: number) {
+      const leagues = ["PL", "PD", "SA", "BL1", "FL1"];
+
+      return forkJoin(
+        leagues.map(code =>
+          this.getLeagueTable(code, season).pipe(
+            map(table => table.slice(0, 5))
+          )
+        )
+      ).pipe(
+        map(results => results.flat()),
+        map(teams =>
+          teams
+            .sort((a, b) => b.points - a.points)
+            .slice(0, 10)
+
+        )
       );
     }
 }

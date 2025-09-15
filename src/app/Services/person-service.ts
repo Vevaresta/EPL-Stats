@@ -27,20 +27,6 @@ export class PersonService {
         );
     }
 
-
-    getTopAssists() {
-      return this.api.get<{scorers: Scorer[]}>(
-        "/competitions/PL/scorers", { 
-          season: 2025, 
-          limit: 50
-        }).pipe(
-          map(response => response.scorers
-          .filter(assist => assist.assists > 0)
-          .sort((a, b) => b.assists - a.assists)
-          .slice(0, 10)
-        ));
-    }
-
     getMatchesForPlayer(playerId: number, season: number) {
       return this.api.get<{ matches: Match[] }>(`/persons/${playerId}/matches`, {
         season
