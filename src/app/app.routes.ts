@@ -10,6 +10,6 @@ export const routes: Routes = [
     { path: 'team/:id', component: Team },
     { path: '**', component: NotFoundError  }
 
-    // make redirect to error page
+    // make redirect to error page-resolver
   
 ];

@@ -8,7 +8,7 @@ import { RouterModule, RouterOutlet } from '@angular/router';
   styleUrl: './app.css'
 })
 export class App {
-  title = 'EPL-Stats';
+  title = 'Top Stats';
 
   constructor(){
 
