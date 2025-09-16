@@ -2,10 +2,11 @@ import { Component, computed, inject } from '@angular/core';
 import { CompetitionService } from '../../Services/competition-service';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { TeamBadge } from "../team-badge/team-badge";
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-top-performing-teams',
-  imports: [TeamBadge],
+  imports: [TeamBadge, CommonModule],
   templateUrl: './top-performing-teams.html',
   styleUrl: './top-performing-teams.css'
 })
@@ -26,9 +27,8 @@ export class TopPerformingTeams {
 
         return {
           ...team,
-          form: team.form?.split("").reverse().join("") ?? "",
-          avgPoints: Number(avgPoints.toFixed(3)),
-          avgGoals: Number(avgGoals.toFixed(3)),
+          avgPoints,
+          avgGoals,
         };
       })
     );

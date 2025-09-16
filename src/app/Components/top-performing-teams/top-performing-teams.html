@@ -17,9 +17,19 @@
                 <td>
                     <app-team-badge [team]="t.team"></app-team-badge>
                 </td>
-                <td>{{ t.form }}</td>
-                <td>{{ t.avgPoints}}</td>
-                <td>{{ t.avgGoals}}</td>
+                <td>
+                    @for (result of t.form.split(""); track $index){
+                        <span
+                        class="me-1"
+                        [class.text-success]="result === 'W'"
+                        [class.text-danger]="result === 'L'"
+                        [class.text-warning]="result === 'D'">
+                        {{result}}
+                        </span>
+                    }
+                </td>
+                <td>{{ t.avgPoints | number:"1.1-3" }}</td>
+                <td>{{ t.avgGoals | number:"1.1-3"}}</td>
             </tr>
         }
     </tbody>
