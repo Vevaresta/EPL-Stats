@@ -1,0 +1,21 @@
+.form-column {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 2px;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.form-block {
+    height: 27px;
+    width: 27px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.85rem;
+    text-align: center;
+}
+
+.team-name-cell {
+    white-space: nowrap;
+}
