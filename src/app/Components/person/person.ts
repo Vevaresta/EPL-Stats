@@ -4,7 +4,6 @@ import { toSignal } from '@angular/core/rxjs-interop';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 
-
 @Component({
   selector: 'app-person',
   imports: [CommonModule, RouterModule],
@@ -15,7 +14,7 @@ export class Person {
     private readonly personService = inject(PersonService);
 
     readonly topScorers = toSignal(
-      this.personService.getTopScorers(),
+      this.personService.getTopScorersTop5Leagues(),
       { initialValue: []}
     );
 

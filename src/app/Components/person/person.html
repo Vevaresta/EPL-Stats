@@ -1,11 +1,15 @@
-<h3>English Premier League Top Scorers 2025/2026</h3>
-
+<h3>Top performing scorers</h3>
+<p>Europe's top 5 flights; 2025/2026 season</p>
 <table class="table table-dark table-striped-columns">
     <thead>
         <tr>
-            <th>#</th>
-            <th>Player</th>
-            <th>Goals</th>
+            <th></th>
+            <th>Team</th>
+            <th>S</th>
+            <th>G</th>
+            <th>A</th>
+            <th>⌀ sc</th>
+            <th>⌀ g</th>
         </tr>
     </thead>
     <tbody>
@@ -13,11 +17,16 @@
             <tr>
                 <td>{{ $index + 1}}</td>
                 <td>
+                    <img [src]="scorer.team.crest" alt="{{ scorer.team.name }}" class="me-2" style="height: 1em; width: auto;">
                     <a [routerLink]="['/person', scorer.player.id]" class="text-white">
                     {{ scorer.player.name }}
                     </a>                  
                 </td>
-                <td>{{ scorer.goals }}</td>
+                <td>{{scorer.goals}}</td>
+                <td>{{scorer.goals}}</td>
+                <td>{{scorer.goals}}</td>
+                <td>{{scorer.goals}}</td>
+                <td>{{scorer.goals}}</td>
             </tr>
         }
     </tbody>
