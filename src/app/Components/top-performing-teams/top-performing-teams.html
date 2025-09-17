@@ -17,14 +17,15 @@
                 <td>
                     <app-team-badge [team]="t.team"></app-team-badge>
                 </td>
-                <td>
-                    @for (result of t.form.split(""); track $index){
+                <td class="d-flex gap-1">
+                    @for (result of (t.form ? t.form.split(',') : []); track $index){
                         <span
-                        class="me-1"
-                        [class.text-success]="result === 'W'"
-                        [class.text-danger]="result === 'L'"
-                        [class.text-warning]="result === 'D'">
-                        {{result}}
+                            class="d-inline-flex justify-content-center align-items-center"
+                            style="width: 27px; height: 27px; font-size: 14px;"
+                            [class.bg-success]="result=== 'W'"
+                            [class.bg-danger]="result === 'L'"
+                            [class.bg-warning]="result === 'D'">
+                            {{result}}
                         </span>
                     }
                 </td>
