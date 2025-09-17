@@ -8,8 +8,8 @@
 }
 
 .form-block {
-    height: 27px;
-    width: 27px;
+    height: 22px;
+    width: 22px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -22,6 +22,7 @@
     align-items: center;
 }
 
-.form-cell {
+
+.top-p-teams-table {
     vertical-align: middle;
 }

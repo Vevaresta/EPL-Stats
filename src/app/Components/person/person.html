@@ -1,6 +1,7 @@
-<h3>Top performing scorers</h3>
+<h5>Top performing scorers</h5>
 <p>Europe's top 5 flights; 2025/2026 season</p>
-<table class="table table-dark table-striped-columns">
+<div class="table-responsive">
+<table class="table table-dark table-striped-columns top-scorers-table">
     <thead>
         <tr>
             <th></th>
@@ -16,11 +17,11 @@
         @for (scorer of topScorers(); track scorer.player.id) {
             <tr>
                 <td>{{ $index + 1}}</td>
-                <td>
-                    <img [src]="scorer.team.crest" alt="{{ scorer.team.name }}" class="me-2" style="height: 1em; width: auto;">
-                    <a [routerLink]="['/person', scorer.player.id]" class="text-white">
+                <td class="player-name-cell">
+                    <app-team-badge [team]="scorer.team"></app-team-badge>
+                    <a [routerLink]="['/person', scorer.player.id]" class="player-link">
                     {{ scorer.player.name }}
-                    </a>                  
+                    </a>                 
                 </td>
                 <td>{{scorer.goals}}</td>
                 <td>{{scorer.goals}}</td>
@@ -31,3 +32,4 @@
         }
     </tbody>
 </table>
+</div>
