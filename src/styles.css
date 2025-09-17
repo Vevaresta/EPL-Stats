@@ -30,3 +30,21 @@ footer {
     justify-content: center;
 }
 
+.table-common {
+    width: 100%;
+    border-collapse: collapse;
+
+}
+
+.table-common th,
+.table-common td {
+    white-space: nowrap;
+    vertical-align: middle;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    text-align: left;
+    align-items: center;
+}
+
+
+

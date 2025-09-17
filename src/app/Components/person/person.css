@@ -7,15 +7,4 @@
     text-decoration: underline;
 }
 
-.top-scorers-table {
-    vertical-align: middle;
-
-}
-
-.player-name-cell {
-    display: flex;
-    white-space: nowrap;
-    align-items: center;
-    gap: 0.5rem;
-}
 
