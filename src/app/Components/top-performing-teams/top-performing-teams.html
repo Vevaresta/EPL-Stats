@@ -21,7 +21,7 @@
                 </td>
                 <td>
                 <div class="form-column">
-                        @for (result of (t.form ? t.form.split(',') : []); track $index){
+                        @for (result of (t.form ? t.form.split(',').reverse() : []); track $index){
                         <span
                             class="form-block"
                             [class.bg-success]="result=== 'W'"
