@@ -1,30 +1,51 @@
-I'm currently learning Typescript/Angular so I wanted to make a project where I could implement everything I learned so far.
+A modern Angular 20 web application for tracking football statistics across Europe’s top 5 leagues.  
 
-EPL Stats is an Angular 20 web application that lets users explore rich statistics from the English Premier League (EPL).
+It allows football fans to explore league tables, top scorers, player stats, and upcoming fixtures in an interactive, responsive interface.
 
-It pulls live and historical football data from the Football-Data.org API. A lot of data is hidden behind a paywall so I use only what is available for free.
+This app provides comprehensive data on teams, players, competitions, and matches, leveraging Football-Data.org API. A lot of data is hidden behind a paywall so I use only what is available for free.
 
-🚀 Features
 
-  - 📊 League Table – View the current Premier League table (points, wins, losses, draws, GD, form, etc.).
+Features:
 
-  - 👤 Player Profiles – See detailed player information such as position, nationality, market value, contract details, and current club.
+  - Competition Overview
 
-  - 🎯 Top Scorers & Assists – Track the league’s best performers by goals and assists for the current season.
+    - View league tables, top scorers, recent matches, and upcoming matches for all supported leagues.
 
-  - 📅 Match Schedules & Results – Browse EPL matches by week (1–38).
-  
-    - Includes matchday dropdown navigation.
+    - Dynamic weekly match filters for precise tracking of matchdays.
 
-    - Shows home & away teams, scorelines, and other match details.
+    - Fully responsive tables and layouts for desktop and mobile.
 
-  - 🔥 Player Match Stats – Check individual player performance across matches, including goals scored and assists.
+  - Top Performing Teams
 
-    - 🏟 Club Matches – View a team’s matches from a selected season.
+    - Ranks top teams from Europe’s top 5 leagues.
 
-  - 🛠️ Tech Stack
+    - Displays form (win/draw/loss blocks), average points per game, and average goals scored per game.
 
-    - Frontend Framework: Angular 20 with Signals
+    - Compact, responsive, and visually consistent with player tables.
+
+  - Players / Top Scorers
+
+    - Shows top scorers and assist leaders across top 5 leagues.
+
+    - Clickable player rows to view detailed player statistics.
+
+    - Player rows include club crest and player name, matching the design of team tables.
+
+  - Match Schedules
+
+    - Lists recent and upcoming matches.
+
+    - Displays date, competition, and score (or scheduled time for future games).
+
+  - Team Details
+
+    - Clicking a team shows detailed information, including current league table position, estimated squad market value, last 10 games, seasonal progress, and last results.
+
+  - Tech Stack
+
+    - Frontend Framework: Angular 20 with Signals and RxJS
+   
+    - Language: TypeScript
 
     - UI: Bootstrap 5
 
