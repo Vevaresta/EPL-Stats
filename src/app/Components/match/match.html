@@ -1,0 +1,50 @@
+<div class="table-responsive">
+<table class="table table-dark table-striped-columns table-common">
+    <thead>
+        <tr>
+            <th>Date/Time</th>
+            <th>Competition</th>
+            <th>Score</th>
+        </tr>
+    </thead>
+    <tbody>
+        @for(match of upcomingMatchesTop5Leagues(); track match.id ){
+            <tr>
+                <td>
+                    {{ match.utcDate | date: 'yyyy/MM/dd, HH:mm' }}
+                </td>
+                <td>
+                    {{ match.competition.name }}
+                </td>
+                <td class="club-name-cell">
+                    <a [routerLink]="['/team', match.homeTeam.id]" class="text-white text-decoration-none">
+                        <div class="d-flex align-items-center club-name-cell">
+                            <img [src]="match.homeTeam.crest" alt="{{match.homeTeam.name}} logo" width="24" height="24" class="me-2">
+                            <span class="fw-semibold" style="font-size: 0.9rem; white-space: nowrap;">{{ match.homeTeam.name }}</span>
+                        </div>
+                    </a>
+
+                     <span class="mx-1">-</span>
+
+                    <a [routerLink]="['/team', match.awayTeam.id]" class="text-white text-decoration-none">
+                        <div class="d-flex align-items-center club-name-cell">
+                            <img [src]="match.awayTeam.crest" alt="{{match.awayTeam.name}} logo" width="24" height="24" class="me-2">
+                            <span class="fw-semibold" style="font-size: 0.9rem; white-space: nowrap;">{{ match.awayTeam.name }}</span>
+                        </div>
+                    </a>
+           
+                    @if (match.status === "FINISHED") {
+                        <span class="ms-2 fw-bold">
+                            {{ match.score.fullTime.home}} - {{ match.score.fullTime.away}}
+                        </span>
+                    } @else {
+                        <span class="ms-2 text-muted">
+                            {{ match.utcDate | date: "shortTime" }}
+                        </span>
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+</div>

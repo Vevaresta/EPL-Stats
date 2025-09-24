@@ -14,13 +14,13 @@ export class TopPerformingTeams {
     
     private readonly competitionService = inject(CompetitionService);
 
-    readonly topTeams = toSignal(
+    readonly topPerformingTeams = toSignal(
       this.competitionService.getTopPerformingTeams(2025),
         { initialValue: [] }
     )
 
     readonly teamsWithStats = computed(() =>
-      this.topTeams().map(team => {
+      this.topPerformingTeams().map(team => {
         const gamesPlayed = team.playedGames ?? 0;
         const avgPoints = team.points / gamesPlayed;
         const avgGoals = team.goalsFor / gamesPlayed;

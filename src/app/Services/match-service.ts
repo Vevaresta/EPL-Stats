@@ -45,7 +45,7 @@ export class MatchService {
   }
 
   // for home page upcoming matches
-  getUpcomingMatches(): Observable<any[]> {
+  getUpcomingMatchesTop5Leagues(): Observable<any[]> {
     const today = new Date();
     const nextWeek = new Date();
     nextWeek.setDate(today.getDate() + 7);
@@ -54,15 +54,19 @@ export class MatchService {
     const dateTo = nextWeek.toISOString().split("T")[0];
 
     const requests = this.top5Leagues.map(code =>
-      this.api.get<any>(`/competitions/${code}/matches`, {
+      this.api.get<{ matches: Match[]}>
+      (`/competitions/${code}/matches`, {
         dateFrom,
         dateTo
       })
     );
     return forkJoin(requests).pipe(
-      map(responses => responses
-          .map(r => r.matches.flat())
-          .sort((a, b) => new Date(a.utcDate).getTime() - new Date(b.utcDate).getTime())
+      map(responses => 
+        responses
+          .flatMap(r => r.matches)
+          .sort(
+            (a, b) => new Date(a.utcDate).getTime() - new Date(b.utcDate).getTime()
+          )
       )
     );
   }
