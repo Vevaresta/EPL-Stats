@@ -45,12 +45,25 @@ export class PersonService {
           }).pipe(map(response => response.scorers))
         )
       ).pipe(
-        map(arrays => arrays.flat()),
-        map(scorers => scorers.sort((a, b) => b.goals - a.goals)),
-        map(sorted => sorted.slice(0, limit))
-      );
-    }
+          map(arrays => arrays.flat()),
+          map(scorers =>
+            scorers.map(player => {
+              const goals = player.goals ?? 0;
+              const assists = player.assists ?? 0;
+              const penalties = player.penalties ?? 0;
+              return {
+                ...player,
+                goals,
+                assists,
+                penalties,
+                totalContributions: goals + assists,
+              };
+            })
+          ),
+          map(players => players.sort((a, b) => b.totalContributions - a.totalContributions)),
+          map(sorted => sorted.slice(0, limit))
+    
+        );
 
 
-
-}
+}}
