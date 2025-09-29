@@ -47,3 +47,8 @@ footer {
 
 }
 
+.club-names-inline {
+    display: flex;
+    align-items: center;
+    white-space: nowrap; 
+}
