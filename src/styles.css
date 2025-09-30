@@ -52,3 +52,14 @@ footer {
     align-items: center;
     white-space: nowrap; 
 }
+
+.player-and-team-link {
+    text-decoration: none;
+    color: inherit;
+}
+
+.player-and-team-link:hover {
+    text-decoration: underline;
+}
+
+

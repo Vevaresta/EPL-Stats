@@ -48,7 +48,7 @@ export class MatchService {
   getUpcomingMatchesTop5Leagues(): Observable<any[]> {
     const today = new Date();
     const nextWeek = new Date();
-    nextWeek.setDate(today.getDate() + 7);
+    nextWeek.setDate(today.getDate() + 2);
 
     const dateFrom = today.toISOString().split("T")[0];
     const dateTo = nextWeek.toISOString().split("T")[0];

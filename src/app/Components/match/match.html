@@ -17,7 +17,7 @@
                     {{ match.competition.name }}
                 </td>
                 <td class="club-names-inline">
-                    <a [routerLink]="['/team', match.homeTeam.id]" class="text-white text-decoration-none">
+                    <a [routerLink]="['/team', match.homeTeam.id]" class="text-white text-decoration-none" class="player-and-team-link"> 
                         <div class="d-flex align-items-center">
                             <img [src]="match.homeTeam.crest" alt="{{match.homeTeam.name}} logo" width="24" height="24" class="me-2">
                             <span class="fw-semibold" style="font-size: 0.9rem; white-space: nowrap;">{{ match.homeTeam.name }}</span>
@@ -26,7 +26,7 @@
 
                      <span class="mx-1">-</span>
 
-                    <a [routerLink]="['/team', match.awayTeam.id]" class="text-white text-decoration-none">
+                    <a [routerLink]="['/team', match.awayTeam.id]" class="text-white text-decoration-none" class="player-and-team-link">
                         <div class="d-flex align-items-center">
                             <img [src]="match.awayTeam.crest" alt="{{match.awayTeam.name}} logo" width="24" height="24" class="me-2">
                             <span class="fw-semibold" style="font-size: 0.9rem; white-space: nowrap;">{{ match.awayTeam.name }}</span>

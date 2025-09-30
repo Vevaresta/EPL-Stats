@@ -15,9 +15,11 @@
         @for (t of teamsWithStats(); track t.team.id){
             <tr>
                 <td>{{ $index + 1 }}</td>
-                <td>
+                <td>                   
                     <app-team-badge [team]="t.team"></app-team-badge>
-                    <span>{{ t.team.name }}</span>
+                    <a [routerLink]="['/team', t.team.id]" class="player-and-team-link">
+                        <span>{{ t.team.name }}</span>
+                    </a>
                 </td>
                 <td>
                 <div class="form-column">

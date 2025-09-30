@@ -1,7 +1,7 @@
 import { Component, computed, inject } from '@angular/core';
 import { TeamService } from '../../Services/team-service';
 import { CommonModule } from '@angular/common';
-import { ActivatedRoute, RouterLink, RouterModule } from '@angular/router';
+import { ActivatedRoute, RouterModule } from '@angular/router';
 import { MatchService } from '../../Services/match-service';
 import { CompetitionService } from '../../Services/competition-service';
 import { toSignal } from '@angular/core/rxjs-interop';
@@ -15,25 +15,25 @@ import { map } from 'rxjs';
 })
 export class Team {
     private readonly route = inject(ActivatedRoute);
-    private readonly clubService = inject(TeamService);
+    private readonly teamService = inject(TeamService);
     private readonly matchService = inject(MatchService);
     private readonly competitionService = inject(CompetitionService);
 
-    readonly clubId = Number(this.route.snapshot.paramMap.get("id"));
+    readonly teamId = Number(this.route.snapshot.paramMap.get("id"));
 
     readonly club = toSignal(
-      this.clubService.getTeam(this.clubId),
+      this.teamService.getTeam(this.teamId),
         { initialValue: null}
     );
 
     readonly matches = toSignal(
-      this.matchService.getMatchesByTeam(this.clubId, 2025),
+      this.matchService.getMatchesByTeam(this.teamId, 2025),
         { initialValue: [] }
     );
 
     readonly currentPosition = toSignal(
       this.competitionService.getLeagueTable("PL", 2025).pipe(
-        map((table) => table.find((row: any) => row.team.id === this.clubId)),
+        map((table) => table.find((row: any) => row.team.id === this.teamId)),
         map((row) => row?.currentPosition ?? null)
       ),
         { initialValue: null}
@@ -42,8 +42,8 @@ export class Team {
       readonly lastWinDate = computed(() => {
         const winMatch = this.matches().find(
           m =>       
-            (m.homeTeam.id === this.clubId && m.score.winner === "HOME_TEAM") ||
-            (m.awayTeam.id === this.clubId && m.score.winner === "AWAY_TEAM")
+            (m.homeTeam.id === this.teamId && m.score.winner === "HOME_TEAM") ||
+            (m.awayTeam.id === this.teamId && m.score.winner === "AWAY_TEAM")
         );
         return winMatch?.utcDate ?? "N/A";
       })
@@ -51,8 +51,8 @@ export class Team {
       readonly lastLossDate = computed(() => {
         const lossMatch = this.matches().find(
           m =>
-            (m.homeTeam.id === this.clubId && m.score.winner === "AWAY_TEAM") ||
-            (m.awayTeam.id === this.clubId && m.score.winner === "HOME_TEAM")
+            (m.homeTeam.id === this.teamId && m.score.winner === "AWAY_TEAM") ||
+            (m.awayTeam.id === this.teamId && m.score.winner === "HOME_TEAM")
         );
         return lossMatch?.utcDate ?? "N/A";
       });

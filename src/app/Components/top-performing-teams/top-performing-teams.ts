@@ -3,10 +3,11 @@ import { CompetitionService } from '../../Services/competition-service';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { TeamBadge } from "../team-badge/team-badge";
 import { CommonModule } from '@angular/common';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-top-performing-teams',
-  imports: [TeamBadge, CommonModule],
+  imports: [TeamBadge, CommonModule, RouterLink],
   templateUrl: './top-performing-teams.html',
   styleUrl: './top-performing-teams.css'
 })

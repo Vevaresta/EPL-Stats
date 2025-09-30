@@ -18,7 +18,7 @@
                 <td>{{ $index + 1}}</td>
                 <td>
                     <app-team-badge [team]="scorer.team"></app-team-badge>
-                    <a [routerLink]="['/person', scorer.player.id]" class="player-link">
+                    <a [routerLink]="['/person', scorer.player.id]" class="player-and-team-link">
                     {{ scorer.player.name }}
                     </a>                 
                 </td>
