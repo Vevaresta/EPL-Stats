@@ -1,13 +1,25 @@
-<header class="bg-dark text-white p-2 w-100">
-    <h1 class="m-0 text-center">
-        <a routerLink="/"
-        class="text-white text-decoration-none">
-        Top Stats
-    </a> 
-</h1>
-</header>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark px-3">
+    <a class="navbar-brand" [routerLink]="['/']">Football Stats</a>
 
- <router-outlet></router-outlet>
+    <div class="d-flex gap-2">
+        <a [routerLink]="['/league', 'PL']"><img src="assets/Eng.png" alt="EPL" width="30" height="32"></a>
+        <a [routerLink]="['/league', 'PD']"><img src="assets/Spa.png" alt="La Liga" width="30" height="32"></a>
+        <a [routerLink]="['/league', 'SA']"><img src="assets/Ita.png" alt="Serie A" width="30" height="32"></a>
+        <a [routerLink]="['/league', 'BL1']"><img src="assets/Ger.png" alt="Bundesliga" width="30" height="32"></a>
+        <a [routerLink]="['/league', 'FL1']"><img src="assets/Fra.png" alt="Ligue 1" width="30" height="32"></a>
+        
+    </div>
+
+    <form class="d-flex ms-auto me-3">
+        <input class="form-control me-2" type="search" placeholder="Search">
+        <button class="btn btn-outline-light" type="submit">Search</button>
+    </form>
+</nav>
+
+<div class="container mt-4">
+    <router-outlet></router-outlet>
+</div>
+
 
 <footer class="bg-dark text-white text-center p-2 w-100 mt-4">
     For the love of the game.
